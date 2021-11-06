@@ -71,8 +71,19 @@ handle_call({all},_From, State) ->
     Reply=lib_sd:all(),
     {reply, Reply, State};
 
-handle_call({all},_From, State) ->
-    Reply=lib_sd:all(),
+handle_call({call,App,M,F,A,T},_From, State) ->
+    Reply=lib_sd:call(App,M,F,A,T),
+    {reply, Reply, State};
+
+handle_call({cast,App,M,F,A},_From, State) ->
+    Reply=lib_sd:cast(App,M,F,A),
+    {reply, Reply, State};
+
+handle_call({get,WantedApp},_From, State) ->
+    Reply=lib_sd:get(WantedApp),
+    {reply, Reply, State};
+handle_call({get,WantedApp,WantedNode},_From, State) ->
+    Reply=lib_sd:get(WantedApp,WantedNode),
     {reply, Reply, State};
 
 
