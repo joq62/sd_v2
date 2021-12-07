@@ -4,8 +4,6 @@ all:
 	rm -rf 1 2 3 4 5 6 7 8 9 controller dbase sd;
 	rm -rf src/*.beam *.beam  test_src/*.beam test_ebin;
 	rm -rf  *~ */*~  erl_cra*;
-#	common
-	erlc -o ebin ../../common/src/*.erl;
 #	app
 	cp src/*.app ebin;
 	erlc -o ebin src/*.erl;
