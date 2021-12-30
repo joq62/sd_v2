@@ -13,13 +13,13 @@ unit_test:
 	rm -rf  *~ */*~  erl_cra*;
 	mkdir test_ebin;
 #	common
-	erlc -o ebin ../../common/src/*.erl;
+	erlc -I ../../include -o ebin ../../common/src/*.erl;
 #	app
 	cp src/*.app ebin;
-	erlc -o ebin src/*.erl;
+	erlc -I ../../include -o ebin src/*.erl;
 #	test application
 	cp test_src/*.app test_ebin;
-	erlc -o test_ebin test_src/*.erl;
+	erlc -I ../../include -o test_ebin test_src/*.erl;
 	erl -pa ebin -pa test_ebin\
 	    -setcookie cookie\
 	    -sname test\
