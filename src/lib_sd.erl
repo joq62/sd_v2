@@ -28,7 +28,7 @@
 %% Returns: non
 %% --------------------------------------------------------------------
 call(App,M,F,A,T)->
-    Result=case rpc:call(node(),sd,get,[App],2*1000) of
+    Result=case rpc:call(node(),sd,get,[App],T) of
 	       {badrpc,Reason}->
 		   {error,[{badrpc,Reason}]};
 	       []->
@@ -45,7 +45,7 @@ call(App,M,F,A,T)->
 %% Returns: non
 %% --------------------------------------------------------------------
 cast(App,M,F,A)->
-    Result=case rpc:call(node(),sd,get,[App],2*1000) of
+    Result=case rpc:call(node(),sd,get,[App],5*1000) of
 	       {badrpc,Reason}->
 		   {badrpc,Reason};
 	       []->
