@@ -28,7 +28,9 @@
 %% Returns: non
 %% --------------------------------------------------------------------
 call(App,M,F,A,T)->
-    Result=case sd:get(App) of
+    Result=case rpc:call(node(),sd,get,[App],2*1000) of
+	       {badrpc,Reason}->
+		   {error,[{badrpc,Reason}]};
 	       []->
 		   {error,[eexists,App,?FUNCTION_NAME,?MODULE,?LINE]},
 		   [];
@@ -43,7 +45,9 @@ call(App,M,F,A,T)->
 %% Returns: non
 %% --------------------------------------------------------------------
 cast(App,M,F,A)->
-    Result=case sd:get(App) of
+    Result=case rpc:call(node(),sd,get,[App],2*1000) of
+	       {badrpc,Reason}->
+		   {badrpc,Reason};
 	       []->
 		   {error,[eexists,App,?FUNCTION_NAME,?MODULE,?LINE]};
 	       [Node|_]->
