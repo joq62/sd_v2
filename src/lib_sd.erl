@@ -15,7 +15,14 @@
 %%
 
 %% --------------------------------------------------------------------
--compile(export_all).
+%-compile(export_all).
+-export([
+	 call/5,
+	 cast/4,
+	 all/0,
+	 get/1,
+	 get/2
+	]).
 
 
 %% ====================================================================
@@ -32,7 +39,6 @@ call(App,M,F,A,T)->
 	       {badrpc,Reason}->
 		   {error,[{badrpc,Reason}]};
 	       []->
-		   {error,[eexists,App,?FUNCTION_NAME,?MODULE,?LINE]},
 		   [];
 	       [Node|_]->
 		   rpc:call(Node,M,F,A,T)
@@ -85,9 +91,3 @@ get(WantedApp,WantedNode)->
 				Node==WantedNode],
     AvailableNodes.
 
-
-%% --------------------------------------------------------------------
-%% Function:start/0 
-%% Description: Initiate the eunit tests, set upp needed processes etc
-%% Returns: non
-%% --------------------------------------------------------------------
