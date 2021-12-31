@@ -1,6 +1,6 @@
 all:
 #	service
-	rm -rf ebin/* *_ebin;
+	rm -rf ebin/* *_ebin ;
 	rm -rf 1 2 3 4 5 6 7 8 9 controller dbase sd;
 	rm -rf src/*.beam *.beam  test_src/*.beam test_ebin;
 	rm -rf  *~ */*~  erl_cra*;
