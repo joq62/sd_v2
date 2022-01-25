@@ -4,9 +4,10 @@
 [{description, "Sd application and cluster" },
 {vsn, "1.0.0" },
 {modules, 
-	  [sd,sd_sup,sd_app,sd_server]},
+	  [sd_app,sd_sup,sd,sd_server]},
 {registered,[sd]},
 {applications, [kernel,stdlib]},
 {mod, {sd_app,[]}},
 {start_phases, []},
-{git_path,"https://github.com/joq62/sd.git"}]}.
+{git_path,"https://github.com/joq62/sd_server.git"}
+]}.

@@ -81,8 +81,8 @@ handle_call({get,WantedApp,WantedNode},_From, State) ->
 
 
 
-handle_call({not_implemented},_From, State) ->
-    Reply=not_implemented,
+handle_call({ping},_From, State) ->
+    Reply=pong,
     {reply, Reply, State};
 
 handle_call({stop}, _From, State) ->
